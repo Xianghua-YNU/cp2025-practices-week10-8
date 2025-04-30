@@ -47,13 +47,13 @@ def main():
     exact_integral = 4.4  # 精确解
 
     for N in [100, 1000]:  # 不同子区间数
-        # TODO: 调用积分函数并计算误差
-        trapezoidal_result = None
-        simpson_result = None
+        # 调用积分函数并计算误差
+        trapezoidal_result = trapezoidal(f, a, b, N)
+        simpson_result = simpson(f, a, b, N)
         
-        # TODO: 计算相对误差
-        trapezoidal_error = None  
-        simpson_error = None
+        # 计算相对误差
+        trapezoidal_error = abs((trapezoidal_result - exact_integral) / exact_integral)
+        simpson_error = abs((simpson_result - exact_integral) / exact_integral)
 
         # 输出结果（模板已给出）
         print(f"N = {N}")
