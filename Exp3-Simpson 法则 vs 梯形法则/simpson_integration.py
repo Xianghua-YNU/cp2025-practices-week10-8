@@ -3,7 +3,7 @@ import numpy as np
 # 待积分函数（学生需自行定义）
 def f(x):
     # TODO: 实现被积函数 f(x) = x^4 - 2x + 1
-    pass
+    return x ** 4 - 2 * x + 1
 
 # 梯形法则积分函数（供参考比较用）
 def trapezoidal(f, a, b, N):
@@ -16,7 +16,11 @@ def trapezoidal(f, a, b, N):
     :return: 积分近似值
     """
     # TODO: 实现梯形法则积分
-    pass
+    h = (b - a) / N
+    x = np.linspace(a, b, N + 1)
+    y = f(x)
+    integral = 0.5 * h * (y[0] + y[-1] + 2 * np.sum(y[1:-1]))
+    return integral
 
 # Simpson法则积分函数（学生需完成）
 def simpson(f, a, b, N):
@@ -30,7 +34,13 @@ def simpson(f, a, b, N):
     """
     # TODO: 实现Simpson法则积分
     # 注意：需先检查N是否为偶数
-    pass
+    if N % 2 != 0:
+        raise ValueError("N必须为偶数")
+    h = (b - a) / N
+    x = np.linspace(a, b, N + 1)
+    y = f(x)
+    integral = h / 3 * (y[0] + y[-1] + 4 * np.sum(y[1:-1:2]) + 2 * np.sum(y[2:-2:2]))
+    return integral
 
 def main():
     a, b = 0, 2  # 积分区间
