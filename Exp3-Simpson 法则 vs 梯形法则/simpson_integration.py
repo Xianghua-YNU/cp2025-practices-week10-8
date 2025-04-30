@@ -39,8 +39,13 @@ def simpson(f, a, b, N):
     h = (b - a) / N
     x = np.linspace(a, b, N + 1)
     y = f(x)
-    integral = h / 3 * (y[0] + y[-1] + 4 * np.sum(y[1:-1:2]) + 2 * np.sum(y[2:-2:2]))
+    # 奇数索引（1,3,5,...,N-1）
+    odd_sum = np.sum(y[1:N:2])
+    # 偶数索引（2,4,6,...,N-2）
+    even_sum = np.sum(y[2:N:2])
+    integral = h / 3 * (y[0] + 4 * odd_sum + 2 * even_sum + y[N])
     return integral
+
 
 def main():
     a, b = 0, 2  # 积分区间
@@ -63,5 +68,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-#"nali youcuo"
