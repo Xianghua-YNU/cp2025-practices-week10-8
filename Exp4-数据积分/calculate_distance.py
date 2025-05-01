@@ -7,7 +7,7 @@ def main():
     try: 
         #获取数据文件路径
         data_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        data_file = os.path.join(data_dir,'Veelocities.txt')
+        data_file = os.path.join(data_dir,'Velocities.txt')
         #读取数据
         data = np.loadtxt(data_file)
         t = data[:,0] #时间列
@@ -29,7 +29,7 @@ def main():
         plt.show()
 except FileNotFoundError:
   print(f"错误：找不到数据文件{data_file}")
-  print("请确保数据文件存在于项目目录中"）
+  print("请确保数据文件存在于项目目录中")
 
 if __name__  == '__main__':
   main()
